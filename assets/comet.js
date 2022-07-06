@@ -5,7 +5,7 @@ function Comet() {
     this.direction < 50 ? 0 : windowHeight
   );
   this.velocity = p5.Vector.random2D();
-  this.velocity.mult(5);
+  this.velocity.mult(7.5);
 
   this.update = function () {
     this.position.add(this.velocity);
