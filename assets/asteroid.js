@@ -16,7 +16,7 @@ function Asteroid() {
 
   this.render = function () {
     push();
-    stroke(255);
+    stroke(73, 79, 87);
     fill(0);
     translate(this.position.x, this.position.y);
     beginShape();
