@@ -3,8 +3,8 @@ let comets = [];
 
 function setup() {
   createCanvas(windowWidth, 600);
-  
-  for (let i = 0; i < 10; i ++) {
+
+  for (let i = 0; i < 10; i++) {
     asteroids.push(new Asteroid());
   }
 }
@@ -15,7 +15,6 @@ function draw() {
   let isComet = random(0, 1500);
   if (isComet < 5 && comets.length == 0) {
     comets.push(new Comet());
-    console.log('comet is coming!');
   }
 
   for (let i = 0; i < asteroids.length; i++) {
@@ -30,7 +29,6 @@ function draw() {
     let isAway = comets[i].edges();
     if (isAway) {
       comets.splice(i, 1);
-      console.log(comets.length);
     }
   }
 }
