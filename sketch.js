@@ -1,10 +1,13 @@
+p5.disableFriendlyErrors = true; // disables FES
+
 let asteroids = [];
 let comets = [];
 
 function setup() {
-  createCanvas(windowWidth, 600);
+  let canvas = createCanvas(windowWidth, windowHeight);
+  canvas.parent("asteroidsCanvas");
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 20; i++) {
     asteroids.push(new Asteroid());
   }
 }
@@ -17,12 +20,6 @@ function draw() {
     comets.push(new Comet());
   }
 
-  for (let i = 0; i < asteroids.length; i++) {
-    asteroids[i].render();
-    asteroids[i].update();
-    asteroids[i].edges();
-  }
-
   for (let i = 0; i < comets.length; i++) {
     comets[i].render();
     comets[i].update();
@@ -31,4 +28,11 @@ function draw() {
       comets.splice(i, 1);
     }
   }
+  for (let i = 0; i < asteroids.length; i++) {
+    asteroids[i].render();
+    asteroids[i].update();
+    asteroids[i].edges();
+  }
+
+  showFps();
 }

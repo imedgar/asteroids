@@ -2,7 +2,7 @@ function Comet() {
   this.direction = random(0, 100);
   this.position = createVector(
     random(windowWidth),
-    this.direction < 50 ? 0 : height
+    this.direction < 50 ? 0 : windowHeight
   );
   this.velocity = p5.Vector.random2D();
   this.velocity.mult(5);
@@ -25,7 +25,7 @@ function Comet() {
     } else if (this.position.x < 0) {
       return true;
     }
-    if (this.position.y > height) {
+    if (this.position.y > windowHeight) {
       return true;
     } else if (this.position.y < 0) {
       return true;
