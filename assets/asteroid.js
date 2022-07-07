@@ -1,13 +1,16 @@
 function Asteroid() {
   this.position = createVector(random(windowWidth), random(windowHeight));
-  this.velocity = p5.Vector.random2D();
 
+  this.velocity = p5.Vector.random2D();
   this.velocityModifier = random(0.3, 0.8);
   this.velocity.mult(this.velocityModifier);
 
   this.r = random(15, 50);
 
   this.vertices = float(random(5, 15));
+
+  this.rotationDirection = random(0, 100);
+  this.rotation = this.rotationDirection > 50 ? -200 : 200;
 
   this.vertexOffset = [];
   for (let i = 0; i < this.vertices; i++) {
@@ -19,6 +22,7 @@ function Asteroid() {
     stroke(73, 79, 87);
     fill(0);
     translate(this.position.x, this.position.y);
+    rotate(this.rotation);
     beginShape();
     for (let i = 0; i < this.vertices; i++) {
       let angle = map(i, 0, this.vertices, 0, TWO_PI);
@@ -34,6 +38,14 @@ function Asteroid() {
   this.update = function () {
     this.position.add(this.velocity);
   };
+
+  this.rotate = function () {
+    if (this.rotation > 100) {
+      this.rotation -= 0.001;
+    } else if (this.rotation < -100) {
+      this.rotation += 0.001;
+    }
+  }
 
   this.edges = function () {
     if (this.position.x > windowWidth + this.r) {

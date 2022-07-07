@@ -13,8 +13,8 @@ function setup() {
   let canvas = createCanvas(windowWidth, windowHeight);
   canvas.parent("asteroidsCanvas");
 
-  for (var i = 0; i < STARS_TOTAL; i++) {
-    stars[i] = new Star();
+  for (let i = 0; i < STARS_TOTAL; i++) {
+    stars.push(new Star());
   }
   for (let i = 0; i < ASTEROIDS_TOTAL; i++) {
     asteroids.push(new Asteroid());
@@ -37,7 +37,6 @@ function passingComet() {
   if (Date.now() - lastComet > COMET_PERIOD) {
     let isComet = random(0, 1500);
     if (isComet < 5 && comets.length == 0) {
-      console.log("comet!!");
       comets.push(new Comet());
       lastComet = Date.now();
     }
@@ -59,12 +58,13 @@ function renderAsteroids() {
   for (let i = 0; i < asteroids.length; i++) {
     asteroids[i].render();
     asteroids[i].update();
+    asteroids[i].rotate();
     asteroids[i].edges();
   }
 }
 
 function renderStars() {
-  for (var i = 0; i < stars.length; i++) {
+  for (let i = 0; i < stars.length; i++) {
     stars[i].render();
   }
 }
